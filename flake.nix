@@ -28,6 +28,7 @@
         ];
       };
     in {
+      packages.x86_64-linux.default = sdf;
       devShells.x86_64-linux.default = pkgs.mkShell {
         name = "sdf-develop";
         buildInputs = [ (pkgs.python3.withPackages(ps: [ sdf ])) ];
