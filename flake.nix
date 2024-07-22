@@ -2,17 +2,23 @@
   description = "signed distance functions to triangle mesh format";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    sdf-src = { url = "https://github.com/fogleman/sdf"; flake = false; };
   };
-  outputs = { self, nixpkgs, sdf-src }: 
+  outputs = { self, nixpkgs }: 
     let
       pkgs = import nixpkgs { system = "x86_64-linux"; }; 
       sdf = pkgs.python312Packages.buildPythonPackage {
         pname = "sdf";
         version = "0.1";
-        src = sdf-src;
-        doCheck = true;
-        buildInputs = with pkgs.python312Packages; [
+        format = "setuptools";
+        src = pkgs.fetchFromGitHub {
+          owner = "fogleman";
+          repo = "sdf";
+          rev = "89a8868";
+          sha256 = "sha256-+vrGBDrmPqSwLypqvaLYhwQKQSrjem3CqjlCAQHnx5o=";
+        };
+        doCheck = false;
+        propagatedBuildInputs = with pkgs.python312Packages; [
+          setuptools
           matplotlib
           meshio
           numpy
@@ -24,7 +30,7 @@
     in {
       devShells.x86_64-linux.default = pkgs.mkShell {
         name = "sdf-develop";
-        buildInputs = [ pkgs.python3.withPackages([ sdf ]) ];
+        buildInputs = [ (pkgs.python3.withPackages(ps: [ sdf ])) ];
       };
     };
 }

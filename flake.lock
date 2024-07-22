@@ -17,20 +17,7 @@
     },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs",
-        "sdf-src": "sdf-src"
-      }
-    },
-    "sdf-src": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-q0OxYOA+zkWsT1wYOsNArxBMoz8VVwye73Fn6HFpgpc=",
-        "type": "file",
-        "url": "https://github.com/fogleman/sdf"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/fogleman/sdf"
+        "nixpkgs": "nixpkgs"
       }
     }
   },
