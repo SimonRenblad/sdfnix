@@ -1,0 +1,39 @@
+{
+  "nodes": {
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1721379653,
+        "narHash": "sha256-8MUgifkJ7lkZs3u99UDZMB4kbOxvMEXQZ31FO3SopZ0=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "1d9c2c9b3e71b9ee663d11c5d298727dace8d374",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-unstable",
+        "type": "indirect"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "sdf-src": "sdf-src"
+      }
+    },
+    "sdf-src": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-q0OxYOA+zkWsT1wYOsNArxBMoz8VVwye73Fn6HFpgpc=",
+        "type": "file",
+        "url": "https://github.com/fogleman/sdf"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/fogleman/sdf"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

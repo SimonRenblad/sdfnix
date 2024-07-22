@@ -4,7 +4,7 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     sdf-src = { url = "https://github.com/fogleman/sdf"; flake = false; };
   };
-  outputs = { nixpkgs, sdf-src }: 
+  outputs = { self, nixpkgs, sdf-src }: 
     let
       pkgs = import nixpkgs { system = "x86_64-linux"; }; 
       sdf = pkgs.python312Packages.buildPythonPackage {
@@ -22,6 +22,9 @@
         ];
       };
     in {
-      packages.x86_64-linux.default = sdf;
+      devShells.x86_64-linux.default = pkgs.mkShell {
+        name = "sdf-develop";
+        buildInputs = [ pkgs.python3.withPackages([ sdf ]) ];
+      };
     };
 }
